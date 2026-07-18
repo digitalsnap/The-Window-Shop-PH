@@ -37,6 +37,7 @@
         "paragraph_f9FKhh",
         "email_form_kJKn8W"
       ],
+      "disabled": true,
       "name": "t:sections.newsletter.presets.name",
       "settings": {
         "color_scheme": "",
