@@ -1,1 +1,95 @@
-{"sections":{"main":{"type":"main-product","blocks":{"text_EmEWjp":{"type":"text","settings":{"text":"","text_style":"body"}},"title_tA7bHK":{"type":"title","settings":{}},"description_G89KrF":{"type":"description","settings":{}},"variant_picker":{"type":"variant_picker","disabled":true,"settings":{"picker_type":"button"}}},"block_order":["text_EmEWjp","title_tA7bHK","description_G89KrF","variant_picker"],"custom_css":[],"settings":{"enable_sticky_info":true,"media_size":"large","constrain_to_viewport":true,"media_fit":"cover","gallery_layout":"thumbnail_slider","media_position":"right","image_zoom":"lightbox","mobile_thumbnails":"columns","hide_variants":false,"enable_video_looping":true,"padding_top":36,"padding_bottom":12}},"related-products":{"type":"related-products","settings":{"heading":"","heading_size":"h1","products_to_show":7,"columns_desktop":4,"color_scheme":"scheme-d2bfd0c7-0300-4a65-90c2-34285647de1c","image_ratio":"square","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":false,"columns_mobile":"2","padding_top":36,"padding_bottom":28}},"6441b99f-429e-4507-887b-00b761518972":{"type":"contact-form","custom_css":[],"settings":{"heading":"Schedule an Appointment","heading_size":"h1","color_scheme":"","padding_top":36,"padding_bottom":36}}},"order":["main","related-products","6441b99f-429e-4507-887b-00b761518972"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "text_EmEWjp": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "body"
+          }
+        },
+        "title_tA7bHK": {
+          "type": "title",
+          "settings": {}
+        },
+        "description_G89KrF": {
+          "type": "description",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "picker_type": "button"
+          }
+        }
+      },
+      "block_order": [
+        "text_EmEWjp",
+        "title_tA7bHK",
+        "description_G89KrF",
+        "variant_picker"
+      ],
+      "custom_css": [],
+      "settings": {
+        "enable_sticky_info": true,
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "cover",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "right",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "columns",
+        "hide_variants": false,
+        "enable_video_looping": true,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "products_to_show": 7,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-d2bfd0c7-0300-4a65-90c2-34285647de1c",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "6441b99f-429e-4507-887b-00b761518972": {
+      "type": "contact-form",
+      "custom_css": [],
+      "settings": {
+        "heading": "Schedule an Appointment",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related-products",
+    "6441b99f-429e-4507-887b-00b761518972"
+  ]
+}

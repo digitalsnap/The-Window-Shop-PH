@@ -1,1 +1,319 @@
-{"sections":{"7cf6da5e-21a1-44d1-b0ad-52a3957df7ad":{"type":"slideshow","blocks":{"template--19880871690533__7cf6da5e-21a1-44d1-b0ad-52a3957df7ad-slide-1":{"type":"slide","settings":{"image":"shopify://shop_images/my_wf_hb_01.jpg","heading":"Residential","heading_size":"h0","subheading":"Considered light control and drapery for the home — tailored to every room, from soft sheers to full blackout.","button_label":"Book a Consultation","link":"shopify://pages/get-a-quote","button_style_secondary":true,"box_align":"top-center","show_text_box":false,"text_alignment":"center","image_overlay_opacity":40,"color_scheme":"accent-1","text_alignment_mobile":"center"}},"50c65e8e-9939-4b8e-b025-8675c34e51bb":{"type":"slide","disabled":true,"settings":{"heading":"Image slide","heading_size":"h1","subheading":"Tell your brand's story through images","button_label":"Get a Quote","link":"shopify://pages/get-a-quote","button_style_secondary":true,"box_align":"middle-center","show_text_box":true,"text_alignment":"center","image_overlay_opacity":0,"color_scheme":"background-1","text_alignment_mobile":"center"}},"template--19880871690533__7cf6da5e-21a1-44d1-b0ad-52a3957df7ad-slide-2":{"type":"slide","settings":{"image":"shopify://shop_images/my_wf_hb_02.jpg","heading":"Commercial","heading_size":"h1","subheading":"Precision-fitted shading for offices, hotels, and hospitality spaces — built for durability without compromising design.","button_label":"Book a Consultation","link":"shopify://pages/get-a-quote","button_style_secondary":true,"box_align":"top-center","show_text_box":false,"text_alignment":"center","image_overlay_opacity":40,"color_scheme":"accent-1","text_alignment_mobile":"center"}}},"block_order":["template--19880871690533__7cf6da5e-21a1-44d1-b0ad-52a3957df7ad-slide-1","50c65e8e-9939-4b8e-b025-8675c34e51bb","template--19880871690533__7cf6da5e-21a1-44d1-b0ad-52a3957df7ad-slide-2"],"settings":{"layout":"full_bleed","slide_height":"small","slider_visual":"counter","auto_rotate":true,"change_slides_speed":7,"image_behavior":"none","show_text_below":false,"accessibility_info":"Slideshow about our brand"}},"17cfc8a7-9d53-4971-9f02-f8030edb23fa":{"type":"multicolumn","blocks":{"template--19880871690533__17cfc8a7-9d53-4971-9f02-f8030edb23fa-column-1":{"type":"column","settings":{"image":"shopify://shop_images/dalby_birch_wood_with_copper_tapes.jpg","title":"Residential","text":"<p>From sheers that soften natural light to blackout drapes and blinds built for privacy and comfort, our window treatments balance everyday living with considered design. Every material, texture, and finish is chosen to complement the character of your home.</p>","link_label":"","link":"shopify://collections/residential"}},"template--19880871690533__17cfc8a7-9d53-4971-9f02-f8030edb23fa-column-2":{"type":"column","settings":{"image":"shopify://shop_images/DuoLite-1-960x1280.webp","title":"Commercial","text":"<p>Function and form, in equal measure. Our commercial window treatments create calmer, more efficient environments for offices, hotels, restaurants, and clinics — durable enough for daily use, refined enough to represent your brand.</p>","link_label":"","link":"shopify://collections/commercial"}},"template--19880871690533__17cfc8a7-9d53-4971-9f02-f8030edb23fa-column-3":{"type":"column","disabled":true,"settings":{"image":"shopify://shop_images/luminette-stria-living-room-116187204-5.webp","title":"Architectural","text":"<p>\"Enhance the beauty and functionality of your windows with our architect-designed interior solutions. Transform any space into a masterpiece.\"</p>","link_label":"","link":"shopify://pages/architectural"}},"722b7048-46d5-4b4d-96a8-0c83af692dd8":{"type":"column","disabled":true,"settings":{"title":"Column","text":"<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>","link_label":"","link":""}}},"block_order":["template--19880871690533__17cfc8a7-9d53-4971-9f02-f8030edb23fa-column-1","template--19880871690533__17cfc8a7-9d53-4971-9f02-f8030edb23fa-column-2","template--19880871690533__17cfc8a7-9d53-4971-9f02-f8030edb23fa-column-3","722b7048-46d5-4b4d-96a8-0c83af692dd8"],"settings":{"title":"","heading_size":"h1","image_width":"full","image_ratio":"square","columns_desktop":3,"column_alignment":"center","background_style":"none","button_label":"Inquire now","button_link":"shopify://pages/contact","color_scheme":"background-1","columns_mobile":"1","swipe_on_mobile":false,"padding_top":12,"padding_bottom":12}},"featured_collection":{"type":"featured-collection","settings":{"title":"Commercial Installations","heading_size":"h2","description":"","show_description":false,"description_style":"body","collection":"commercial","products_to_show":8,"columns_desktop":4,"full_width":false,"show_view_all":false,"view_all_style":"link","enable_desktop_slider":true,"color_scheme":"background-2","image_ratio":"square","image_shape":"default","show_secondary_image":true,"show_vendor":true,"show_rating":false,"enable_quick_add":false,"columns_mobile":"1","swipe_on_mobile":true,"padding_top":12,"padding_bottom":12}},"b5ea2b77-1bc2-4600-b14a-ec54814bf428":{"type":"image-with-text","blocks":{"template--19880871690533__b5ea2b77-1bc2-4600-b14a-ec54814bf428-heading-1":{"type":"heading","disabled":false,"settings":{"heading":"Drapery","heading_size":"h1"}},"template--19880871690533__b5ea2b77-1bc2-4600-b14a-ec54814bf428-text-1":{"type":"text","settings":{"text":"<p>For complete light control, drapery remains the most<br/>effective window treatment. Crafted from richly textured fabrics and elegantly<br/>hungover windows, drapes provide exceptional privacy and superior light<br/>blockage.</p><p>The performance of drapery depends greatly on the fabric's color and construction.<br/>Generally, darker shades offer better light absorption, while denser, tightly<br/>woven fabrics provide greater opacity. The tighter the weave and the heavier<br/>the fabric, the more effective it becomes in blocking light and creating a<br/>comfortable, private space.</p>","text_style":"body"}},"template--19880871690533__b5ea2b77-1bc2-4600-b14a-ec54814bf428-button-1":{"type":"button","settings":{"button_label":"Schedule For Appointment","button_link":"shopify://pages/get-a-quote"}}},"block_order":["template--19880871690533__b5ea2b77-1bc2-4600-b14a-ec54814bf428-heading-1","template--19880871690533__b5ea2b77-1bc2-4600-b14a-ec54814bf428-text-1","template--19880871690533__b5ea2b77-1bc2-4600-b14a-ec54814bf428-button-1"],"settings":{"image":"shopify://shop_images/20942664755.png","height":"small","desktop_image_width":"small","layout":"image_first","desktop_content_position":"top","desktop_content_alignment":"left","content_layout":"no-overlap","color_scheme":"background-1","image_behavior":"none","mobile_content_alignment":"center","padding_top":12,"padding_bottom":12}},"d7af5d4d-8175-47ab-902b-c22d5a77efcc":{"type":"rich-text","blocks":{"template--19880871690533__d7af5d4d-8175-47ab-902b-c22d5a77efcc-heading-1":{"type":"heading","settings":{"heading":"About Us","heading_size":"h1"}},"template--19880871690533__d7af5d4d-8175-47ab-902b-c22d5a77efcc-text-1":{"type":"text","settings":{"text":"<p>\"We are the country's best window fashion retailer.<br/>We’ve steadily and consistently worked hard maintaining that goal ever since we started in a small 2-person showroom in the Philippines since 2008.\"</p>"}}},"block_order":["template--19880871690533__d7af5d4d-8175-47ab-902b-c22d5a77efcc-heading-1","template--19880871690533__d7af5d4d-8175-47ab-902b-c22d5a77efcc-text-1"],"settings":{"desktop_content_position":"center","content_alignment":"center","color_scheme":"inverse","full_width":false,"padding_top":12,"padding_bottom":12}},"17899abd-57cd-4a56-8d4a-ea9577bb00b0":{"type":"multicolumn","blocks":{"template--19880871690533__17899abd-57cd-4a56-8d4a-ea9577bb00b0-column-1":{"type":"column","settings":{"title":"David","text":"<p>\"They over delivered on the design that we expected. Working with Window Shop Inc has been fulfilling. \"</p>","link_label":"","link":""}},"template--19880871690533__17899abd-57cd-4a56-8d4a-ea9577bb00b0-column-2":{"type":"column","settings":{"title":"Jude","text":"<p>\"Excellent product line up and you will know that they are indeed professionals!\"</p>","link_label":"","link":""}},"template--19880871690533__17899abd-57cd-4a56-8d4a-ea9577bb00b0-column-3":{"type":"column","settings":{"title":"Gabriel","text":"<p>\"Excellent customer support when I claimed my warranty.\"</p>","link_label":"","link":""}}},"block_order":["template--19880871690533__17899abd-57cd-4a56-8d4a-ea9577bb00b0-column-1","template--19880871690533__17899abd-57cd-4a56-8d4a-ea9577bb00b0-column-2","template--19880871690533__17899abd-57cd-4a56-8d4a-ea9577bb00b0-column-3"],"settings":{"title":"Testimonials","heading_size":"h1","image_width":"third","image_ratio":"square","columns_desktop":3,"column_alignment":"center","background_style":"primary","button_label":"","button_link":"","color_scheme":"background-1","columns_mobile":"1","swipe_on_mobile":false,"padding_top":24,"padding_bottom":12}}},"order":["7cf6da5e-21a1-44d1-b0ad-52a3957df7ad","17cfc8a7-9d53-4971-9f02-f8030edb23fa","featured_collection","b5ea2b77-1bc2-4600-b14a-ec54814bf428","d7af5d4d-8175-47ab-902b-c22d5a77efcc","17899abd-57cd-4a56-8d4a-ea9577bb00b0"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "7cf6da5e-21a1-44d1-b0ad-52a3957df7ad": {
+      "type": "slideshow",
+      "blocks": {
+        "template--19880871690533__7cf6da5e-21a1-44d1-b0ad-52a3957df7ad-slide-1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/my_wf_hb_01.jpg",
+            "heading": "Residential",
+            "heading_size": "h0",
+            "subheading": "Considered light control and drapery for the home — tailored to every room, from soft sheers to full blackout.",
+            "button_label": "Book a Consultation",
+            "link": "shopify://pages/get-a-quote",
+            "button_style_secondary": true,
+            "box_align": "top-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 40,
+            "color_scheme": "accent-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "50c65e8e-9939-4b8e-b025-8675c34e51bb": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Get a Quote",
+            "link": "shopify://pages/get-a-quote",
+            "button_style_secondary": true,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "template--19880871690533__7cf6da5e-21a1-44d1-b0ad-52a3957df7ad-slide-2": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/my_wf_hb_02.jpg",
+            "heading": "Commercial",
+            "heading_size": "h1",
+            "subheading": "Precision-fitted shading for offices, hotels, and hospitality spaces — built for durability without compromising design.",
+            "button_label": "Book a Consultation",
+            "link": "shopify://pages/get-a-quote",
+            "button_style_secondary": true,
+            "box_align": "top-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 40,
+            "color_scheme": "accent-1",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--19880871690533__7cf6da5e-21a1-44d1-b0ad-52a3957df7ad-slide-1",
+        "50c65e8e-9939-4b8e-b025-8675c34e51bb",
+        "template--19880871690533__7cf6da5e-21a1-44d1-b0ad-52a3957df7ad-slide-2"
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "small",
+        "slider_visual": "counter",
+        "auto_rotate": true,
+        "change_slides_speed": 7,
+        "image_behavior": "none",
+        "show_text_below": false,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "17cfc8a7-9d53-4971-9f02-f8030edb23fa": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--19880871690533__17cfc8a7-9d53-4971-9f02-f8030edb23fa-column-1": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/dalby_birch_wood_with_copper_tapes.jpg",
+            "title": "Residential",
+            "text": "<p>From sheers that soften natural light to blackout drapes and blinds built for privacy and comfort, our window treatments balance everyday living with considered design. Every material, texture, and finish is chosen to complement the character of your home.</p>",
+            "link_label": "",
+            "link": "shopify://collections/residential"
+          }
+        },
+        "template--19880871690533__17cfc8a7-9d53-4971-9f02-f8030edb23fa-column-2": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/DuoLite-1-960x1280.webp",
+            "title": "Commercial",
+            "text": "<p>Function and form, in equal measure. Our commercial window treatments create calmer, more efficient environments for offices, hotels, restaurants, and clinics — durable enough for daily use, refined enough to represent your brand.</p>",
+            "link_label": "",
+            "link": "shopify://collections/commercial"
+          }
+        },
+        "template--19880871690533__17cfc8a7-9d53-4971-9f02-f8030edb23fa-column-3": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/luminette-stria-living-room-116187204-5.webp",
+            "title": "Architectural",
+            "text": "<p>\"Enhance the beauty and functionality of your windows with our architect-designed interior solutions. Transform any space into a masterpiece.\"</p>",
+            "link_label": "",
+            "link": "shopify://pages/architectural"
+          }
+        },
+        "722b7048-46d5-4b4d-96a8-0c83af692dd8": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--19880871690533__17cfc8a7-9d53-4971-9f02-f8030edb23fa-column-1",
+        "template--19880871690533__17cfc8a7-9d53-4971-9f02-f8030edb23fa-column-2",
+        "template--19880871690533__17cfc8a7-9d53-4971-9f02-f8030edb23fa-column-3",
+        "722b7048-46d5-4b4d-96a8-0c83af692dd8"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "Inquire now",
+        "button_link": "shopify://pages/contact",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Commercial Installations",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "commercial",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "link",
+        "enable_desktop_slider": true,
+        "color_scheme": "background-2",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": true,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "b5ea2b77-1bc2-4600-b14a-ec54814bf428": {
+      "type": "image-with-text",
+      "blocks": {
+        "template--19880871690533__b5ea2b77-1bc2-4600-b14a-ec54814bf428-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Drapery",
+            "heading_size": "h1"
+          }
+        },
+        "template--19880871690533__b5ea2b77-1bc2-4600-b14a-ec54814bf428-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>For complete light control, drapery remains the most<br/>effective window treatment. Crafted from richly textured fabrics and elegantly<br/>hungover windows, drapes provide exceptional privacy and superior light<br/>blockage.</p><p>The performance of drapery depends greatly on the fabric's color and construction.<br/>Generally, darker shades offer better light absorption, while denser, tightly<br/>woven fabrics provide greater opacity. The tighter the weave and the heavier<br/>the fabric, the more effective it becomes in blocking light and creating a<br/>comfortable, private space.</p>",
+            "text_style": "body"
+          }
+        },
+        "template--19880871690533__b5ea2b77-1bc2-4600-b14a-ec54814bf428-button-1": {
+          "type": "button",
+          "settings": {
+            "button_label": "Schedule For Appointment",
+            "button_link": "shopify://pages/get-a-quote"
+          }
+        }
+      },
+      "block_order": [
+        "template--19880871690533__b5ea2b77-1bc2-4600-b14a-ec54814bf428-heading-1",
+        "template--19880871690533__b5ea2b77-1bc2-4600-b14a-ec54814bf428-text-1",
+        "template--19880871690533__b5ea2b77-1bc2-4600-b14a-ec54814bf428-button-1"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/20942664755.png",
+        "height": "small",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "d7af5d4d-8175-47ab-902b-c22d5a77efcc": {
+      "type": "rich-text",
+      "blocks": {
+        "template--19880871690533__d7af5d4d-8175-47ab-902b-c22d5a77efcc-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "About Us",
+            "heading_size": "h1"
+          }
+        },
+        "template--19880871690533__d7af5d4d-8175-47ab-902b-c22d5a77efcc-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>\"We are the country's best window fashion retailer.<br/>We’ve steadily and consistently worked hard maintaining that goal ever since we started in a small 2-person showroom in the Philippines since 2008.\"</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--19880871690533__d7af5d4d-8175-47ab-902b-c22d5a77efcc-heading-1",
+        "template--19880871690533__d7af5d4d-8175-47ab-902b-c22d5a77efcc-text-1"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "inverse",
+        "full_width": false,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "17899abd-57cd-4a56-8d4a-ea9577bb00b0": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--19880871690533__17899abd-57cd-4a56-8d4a-ea9577bb00b0-column-1": {
+          "type": "column",
+          "settings": {
+            "title": "David",
+            "text": "<p>\"They over delivered on the design that we expected. Working with Window Shop Inc has been fulfilling. \"</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--19880871690533__17899abd-57cd-4a56-8d4a-ea9577bb00b0-column-2": {
+          "type": "column",
+          "settings": {
+            "title": "Jude",
+            "text": "<p>\"Excellent product line up and you will know that they are indeed professionals!\"</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--19880871690533__17899abd-57cd-4a56-8d4a-ea9577bb00b0-column-3": {
+          "type": "column",
+          "settings": {
+            "title": "Gabriel",
+            "text": "<p>\"Excellent customer support when I claimed my warranty.\"</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--19880871690533__17899abd-57cd-4a56-8d4a-ea9577bb00b0-column-1",
+        "template--19880871690533__17899abd-57cd-4a56-8d4a-ea9577bb00b0-column-2",
+        "template--19880871690533__17899abd-57cd-4a56-8d4a-ea9577bb00b0-column-3"
+      ],
+      "settings": {
+        "title": "Testimonials",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 24,
+        "padding_bottom": 12
+      }
+    }
+  },
+  "order": [
+    "7cf6da5e-21a1-44d1-b0ad-52a3957df7ad",
+    "17cfc8a7-9d53-4971-9f02-f8030edb23fa",
+    "featured_collection",
+    "b5ea2b77-1bc2-4600-b14a-ec54814bf428",
+    "d7af5d4d-8175-47ab-902b-c22d5a77efcc",
+    "17899abd-57cd-4a56-8d4a-ea9577bb00b0"
+  ]
+}
