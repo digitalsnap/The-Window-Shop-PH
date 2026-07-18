@@ -1,0 +1,1 @@
+{"context":{"market":"ph"},"parent":"product.json","sections":{"main":{"settings":{},"blocks":{"text_ihmPi":{"type":"text","disabled":false,"settings":{}}},"block_order":["text_ihmPi","variant_picker"]}}}

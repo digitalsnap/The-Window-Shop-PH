@@ -1,0 +1,581 @@
+{% doc %}
+  @prompt
+    Images collage
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-image-collage-{{ ai_gen_id }} {
+    display: grid;
+    gap: {{ block.settings.gap }}px;
+    padding: {{ block.settings.padding }}px;
+    background-color: {{ block.settings.background_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+  }
+
+  .ai-image-collage-{{ ai_gen_id }}--layout-grid {
+    grid-template-columns: repeat({{ block.settings.columns_desktop }}, 1fr);
+  }
+
+  .ai-image-collage-{{ ai_gen_id }}--layout-masonry {
+    grid-template-columns: repeat({{ block.settings.columns_desktop }}, 1fr);
+    grid-auto-rows: 200px;
+  }
+
+  .ai-image-collage-{{ ai_gen_id }}--layout-featured {
+    grid-template-columns: 2fr 1fr;grid-template-rows: 1fr 1fr;
+  }
+
+  .ai-image-collage-item-{{ ai_gen_id }} {
+    position: relative;
+    overflow: hidden;border-radius: {{ block.settings.item_border_radius }}px;
+    transition: transform 0.3s ease;background-color: #f4f4f4;
+  }
+
+  .ai-image-collage-item-{{ ai_gen_id }}:hover {
+    transform: scale({{ block.settings.hover_scale }});
+  }
+
+  .ai-image-collage-item-{{ ai_gen_id }}--featured {
+    grid-row: 1 / -1;
+  }
+
+  .ai-image-collage-item-{{ ai_gen_id }}--tall {
+    grid-row: span 2;
+  }
+
+  .ai-image-collage-item-{{ ai_gen_id }}--wide {
+    grid-column: span 2;
+  }
+
+  .ai-image-collage-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .ai-image-collage-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;}
+
+  .ai-image-collage-placeholder-{{ ai_gen_id }} svg {
+    width: 60px;
+    height: 60px;
+    opacity: 0.5;
+  }
+
+  .ai-image-collage-overlay-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, {{ block.settings.overlay_opacity }}) 100%
+    );
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  {% if block.settings.show_overlay %}
+    .ai-image-collage-overlay-{{ ai_gen_id }} {
+      opacity: 1;
+    }
+  {% endif %}
+
+  .ai-image-collage-item-{{ ai_gen_id }}:hover .ai-image-collage-overlay-{{ ai_gen_id }} {
+    opacity: 1;
+  }
+
+  .ai-image-collage-text-{{ ai_gen_id }} {
+    color: {{ block.settings.overlay_text_color }};
+    font-size: {{ block.settings.text_size }}px;
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-image-collage-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.columns_mobile }}, 1fr) !important;
+      gap: {{ block.settings.gap | times: 0.5 }}px;padding: {{ block.settings.padding | times: 0.5 }}px;
+    }
+
+    .ai-image-collage-item-{{ ai_gen_id }}--featured,
+    .ai-image-collage-item-{{ ai_gen_id }}--tall,
+    .ai-image-collage-item-{{ ai_gen_id }}--wide {
+      grid-row: auto;
+      grid-column: auto;
+    }
+
+    .ai-image-collage-overlay-{{ ai_gen_id }} {
+      padding: 15px;
+    }
+
+    .ai-image-collage-text-{{ ai_gen_id }} {
+      font-size: {{ block.settings.text_size | times: 0.9 }}px;
+    }
+  }
+{% endstyle %}<div 
+  class="ai-image-collage-{{ ai_gen_id }} ai-image-collage-{{ ai_gen_id }}--layout-{{ block.settings.layout }}"
+  {{ block.shopify_attributes }}
+>
+  {% for i in (1..6) %}
+    {% liquid
+      assign image_key = 'image_' | append: i
+      assign text_key = 'text_' | append: i
+      assign link_key = 'link_' | append: i
+      assign size_key = 'size_' | append: i
+      
+      assign image = block.settings[image_key]
+      assign text = block.settings[text_key]
+      assign link = block.settings[link_key]
+      assign size = block.settings[size_key]
+    %}
+
+    {% if image != blank %}
+      {% assign item_class = 'ai-image-collage-item-' | append: ai_gen_id %}
+      {% if block.settings.layout == 'featured' and i == 1 %}
+        {% assign item_class = item_class | append: ' ai-image-collage-item-' | append: ai_gen_id | append: '--featured' %}
+      {% elsif block.settings.layout == 'masonry' %}
+        {% if size == 'tall' %}
+          {% assign item_class = item_class | append: ' ai-image-collage-item-' | append: ai_gen_id | append: '--tall' %}
+        {% elsif size == 'wide' %}
+          {% assign item_class = item_class | append: ' ai-image-collage-item-' | append: ai_gen_id | append: '--wide' %}
+        {% endif %}
+      {% endif %}
+
+      <div class="{{ item_class }}">
+        {% if link != blank %}
+          <a href="{{ link }}">
+        {% endif %}
+        <img
+          src="{{ image | image_url: width: 800 }}"
+          alt="{{ image.alt | escape }}"
+          class="ai-image-collage-image-{{ ai_gen_id }}"
+          loading="lazy"
+          width="{{ image.width }}"
+          height="{{ image.height }}"
+        >
+
+        {% if text != blank %}
+          <div class="ai-image-collage-overlay-{{ ai_gen_id }}">
+            <div class="ai-image-collage-text-{{ ai_gen_id }}">{{ text }}</div>
+          </div>
+        {% endif %}
+
+        {% if link != blank %}
+          </a>
+        {% endif %}
+      </div>
+    {% else %}
+      <div class="ai-image-collage-item-{{ ai_gen_id }}">
+        <div class="ai-image-collage-placeholder-{{ ai_gen_id }}">
+          {{ 'image' | placeholder_svg_tag }}
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Images collage",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout style",
+      "options": [
+        {
+          "value": "grid",
+          "label": "Grid"
+        },
+        {
+          "value": "masonry",
+          "label": "Masonry"
+        },
+        {
+          "value": "featured",
+          "label": "Featured"
+        }
+      ],
+      "default": "grid"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "label": "Columns on desktop",
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columns on mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Gap between images",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Container padding",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Container border radius",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "item_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Image border radius",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "hover_scale",
+      "min": 1,
+      "max": 1.2,
+      "step": 0.1,
+      "label": "Hover scale",
+      "default": 1.1
+    },
+    {
+      "type": "header",
+      "content": "Text overlay"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_overlay",
+      "label": "Always show overlay",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "label": "Overlay opacity",
+      "default": 0.5
+    },
+    {
+      "type": "color",
+      "id": "overlay_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Text size",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Image1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "text_1",
+      "label": "Text overlay"
+    },
+    {
+      "type": "url",
+      "id": "link_1",
+      "label": "Link"
+    },
+    {
+      "type": "select",
+      "id": "size_1",
+      "label": "Size",
+      "options": [
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "tall",
+          "label": "Tall"
+        },
+        {
+          "value": "wide",
+          "label": "Wide"
+        }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "header",
+      "content": "Image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "text_2",
+      "label": "Text overlay"
+    },
+    {
+      "type": "url",
+      "id": "link_2",
+      "label": "Link"
+    },
+    {
+      "type": "select",
+      "id": "size_2",
+      "label": "Size",
+      "options": [
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "tall",
+          "label": "Tall"
+        },
+        {
+          "value": "wide",
+          "label": "Wide"
+        }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "header",
+      "content": "Image 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "text_3",
+      "label": "Text overlay"
+    },
+    {
+      "type": "url",
+      "id": "link_3",
+      "label": "Link"
+    },
+    {
+      "type": "select",
+      "id": "size_3",
+      "label": "Size",
+      "options": [
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "tall",
+          "label": "Tall"
+        },
+        {
+          "value": "wide",
+          "label": "Wide"
+        }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "header",
+      "content": "Image 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "text_4",
+      "label": "Text overlay"
+    },
+    {
+      "type": "url",
+      "id": "link_4",
+      "label": "Link"
+    },
+    {
+      "type": "select",
+      "id": "size_4",
+      "label": "Size",
+      "options": [
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "tall",
+          "label": "Tall"
+        },
+        {
+          "value": "wide",
+          "label": "Wide"
+        }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "header",
+      "content": "Image 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_5",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "text_5",
+      "label": "Text overlay"
+    },
+    {
+      "type": "url",
+      "id": "link_5",
+      "label": "Link"
+    },
+    {
+      "type": "select",
+      "id": "size_5",
+      "label": "Size",
+      "options": [
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "tall",
+          "label": "Tall"
+        },
+        {
+          "value": "wide",
+          "label": "Wide"
+        }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "header",
+      "content": "Image 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_6",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "text_6",
+      "label": "Text overlay"
+    },
+    {
+      "type": "url",
+      "id": "link_6",
+      "label": "Link"
+    },
+    {
+      "type": "select",
+      "id": "size_6",
+      "label": "Size",
+      "options": [
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "tall",
+          "label": "Tall"
+        },
+        {
+          "value": "wide",
+          "label": "Wide"
+        }
+      ],
+      "default": "normal"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Images collage"
+    }
+  ],
+  "tag": null
+}
+{% endschema %}

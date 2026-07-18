@@ -1,0 +1,772 @@
+{% doc %}
+  @prompt
+    portfolio
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-portfolio-{{ ai_gen_id }} {
+    padding: {{ block.settings.section_padding }}px 0;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-portfolio-container-{{ ai_gen_id }} {
+    max-width:1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .ai-portfolio-header-{{ ai_gen_id }} {
+    text-align: {{ block.settings.text_alignment }};
+    margin-bottom: {{ block.settings.header_spacing }}px;
+  }
+
+  .ai-portfolio-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    color: {{ block.settings.title_color }};
+    margin: 0 0 16px;font-weight: 600;
+  }
+
+  .ai-portfolio-description-{{ ai_gen_id }} {
+    font-size: {{ block.settings.description_size }}px;
+    color: {{ block.settings.description_color }};
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .ai-portfolio-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat({{ block.settings.columns_desktop }}, 1fr);
+    gap: {{ block.settings.grid_gap }}px;
+    margin-top: {{ block.settings.grid_spacing }}px;
+  }
+
+  .ai-portfolio-item-{{ ai_gen_id }} {
+    position: relative;
+    background-color: {{ block.settings.card_background }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .ai-portfolio-item-{{ ai_gen_id }}:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .ai-portfolio-image-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    aspect-ratio: {{ block.settings.image_aspect_ratio }};
+    overflow: hidden;
+  }
+
+  .ai-portfolio-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .ai-portfolio-item-{{ ai_gen_id }}:hover .ai-portfolio-image-{{ ai_gen_id }} {
+    transform: scale(1.05);
+  }
+
+  .ai-portfolio-image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-portfolio-image-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  .ai-portfolio-overlay-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 24px;
+  }
+
+  .ai-portfolio-item-{{ ai_gen_id }}:hover .ai-portfolio-overlay-{{ ai_gen_id }} {
+    opacity: 1;
+  }
+
+  .ai-portfolio-overlay-title-{{ ai_gen_id }} {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 8px;
+  }
+
+  .ai-portfolio-overlay-description-{{ ai_gen_id }} {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .ai-portfolio-content-{{ ai_gen_id }} {
+    padding: {{ block.settings.card_padding }}px;
+  }
+
+  .ai-portfolio-item-title-{{ ai_gen_id }} {
+    font-size: 18px;
+    color: {{ block.settings.card_title_color }};
+    margin: 0 0 8px;
+    font-weight: 600;
+  }
+
+  .ai-portfolio-item-description-{{ ai_gen_id }} {
+    font-size: 14px;
+    color: {{ block.settings.card_description_color }};
+    margin: 0 0 16px;line-height: 1.5;
+  }
+
+  .ai-portfolio-tags-{{ ai_gen_id }} {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .ai-portfolio-tag-{{ ai_gen_id }} {
+    background-color: {{ block.settings.tag_background }};
+    color: {{ block.settings.tag_text_color }};
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .ai-portfolio-link-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: {{ block.settings.link_color }};
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .ai-portfolio-link-{{ ai_gen_id }}:hover {
+    color: {{ block.settings.link_hover_color }};
+  }
+
+  .ai-portfolio-link-{{ ai_gen_id }} svg {
+    width: 16px;
+    height: 16px;transition: transform 0.3s ease;
+  }
+
+  .ai-portfolio-link-{{ ai_gen_id }}:hover svg {
+    transform: translateX(4px);
+  }
+
+  @media screen and (max-width: 990px) {
+    .ai-portfolio-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.columns_tablet }}, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-portfolio-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.columns_mobile }}, 1fr);gap: {{ block.settings.grid_gap | times: 0.75 }}px;
+    }
+
+    .ai-portfolio-container-{{ ai_gen_id }} {
+      padding: 0 16px;
+    }
+
+    .ai-portfolio-content-{{ ai_gen_id }} {
+      padding: {{ block.settings.card_padding | times: 0.75 }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-portfolio-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-portfolio-container-{{ ai_gen_id }}">
+    {% if block.settings.title != blank or block.settings.description != blank %}
+      <div class="ai-portfolio-header-{{ ai_gen_id }}">
+        {% if block.settings.title != blank %}
+          <h2 class="ai-portfolio-title-{{ ai_gen_id }}">{{ block.settings.title }}</h2>
+        {% endif %}
+        {% if block.settings.description != blank %}
+          <div class="ai-portfolio-description-{{ ai_gen_id }}">{{ block.settings.description }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="ai-portfolio-grid-{{ ai_gen_id }}">
+      {% for i in (1..6) %}
+        {% liquid
+          assign image_key = 'item_' | append: i | append: '_image'
+          assign title_key = 'item_' | append: i | append: '_title'
+          assign description_key = 'item_' | append: i | append: '_description'
+          assign tags_key = 'item_' | append: i | append: '_tags'
+          assign link_key = 'item_' | append: i | append: '_link'
+          assign link_text_key = 'item_' | append: i | append: '_link_text'
+
+          assign item_image = block.settings[image_key]
+          assign item_title = block.settings[title_key]
+          assign item_description = block.settings[description_key]
+          assign item_tags = block.settings[tags_key]
+          assign item_link = block.settings[link_key]
+          assign item_link_text = block.settings[link_text_key]
+        %}
+
+        {% if item_title != blank or item_image != blank %}
+          <div class="ai-portfolio-item-{{ ai_gen_id }}"><div class="ai-portfolio-image-wrapper-{{ ai_gen_id }}">
+              {% if item_image %}
+                <img
+                  src="{{ item_image | image_url: width: 600 }}"
+                  alt="{{ item_image.alt | escape }}"
+                  class="ai-portfolio-image-{{ ai_gen_id }}"
+                  loading="lazy"
+                width="600"
+                  height="{{ 600 | divided_by: block.settings.image_aspect_ratio | round }}"
+                >
+              {% else %}
+                <div class="ai-portfolio-image-placeholder-{{ ai_gen_id }}">
+                  {{ 'image' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+
+              {% if block.settings.show_overlay and item_title != blank %}
+                <div class="ai-portfolio-overlay-{{ ai_gen_id }}">
+                  <h3 class="ai-portfolio-overlay-title-{{ ai_gen_id }}">{{ item_title }}</h3>
+                  {% if item_description != blank %}
+                    <p class="ai-portfolio-overlay-description-{{ ai_gen_id }}">{{ item_description | truncate: 100 }}</p>
+                  {% endif %}
+                </div>
+              {% endif %}
+            </div>
+
+            {% if block.settings.show_content %}
+              <div class="ai-portfolio-content-{{ ai_gen_id }}">
+                {% if item_title != blank %}
+                  <h3 class="ai-portfolio-item-title-{{ ai_gen_id }}">{{ item_title }}</h3>
+                {% endif %}
+
+                {% if item_description != blank %}
+                  <p class="ai-portfolio-item-description-{{ ai_gen_id }}">{{ item_description }}</p>
+                {% endif %}
+
+                {% if item_tags != blank %}
+                  <div class="ai-portfolio-tags-{{ ai_gen_id }}">
+                    {% assign tags_array = item_tags | split: ',' %}
+                    {% for tag in tags_array %}
+                      <span class="ai-portfolio-tag-{{ ai_gen_id }}">{{ tag | strip }}</span>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+
+                {% if item_link != blank %}
+                  <a href="{{ item_link }}" class="ai-portfolio-link-{{ ai_gen_id }}">
+                    {% if item_link_text != blank %}
+                      {{ item_link_text }}
+                    {% else %}
+                      View project
+                    {% endif %}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M7 17L17 7"></path>
+                      <path d="M7 7h10v10"></path>
+                    </svg>
+                  </a>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Portfolio",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Our Portfolio"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Explore our latest projects and creative work</p>"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {"value": "left", "label": "Left"},
+        {"value": "center", "label": "Center"},
+        {"value": "right", "label": "Right"}
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Columns on desktop",
+      "options": [
+        {"value": "1", "label": "1"},
+        {"value": "2", "label": "2"},
+        {"value": "3", "label": "3"},
+        {"value": "4", "label": "4"}
+      ],
+      "default": "3"
+    },
+    {
+      "type": "select",
+      "id": "columns_tablet",
+      "label": "Columns on tablet",
+      "options": [
+        {"value": "1", "label": "1"},
+        {"value": "2", "label": "2"},
+        {"value": "3", "label": "3"}
+      ],
+      "default": "2"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columns on mobile",
+      "options": [
+        {"value": "1", "label": "1"},
+        {"value": "2", "label": "2"}
+      ],
+      "default": "1"
+    },
+    {
+      "type": "select",
+      "id": "image_aspect_ratio",
+      "label": "Image aspect ratio",
+      "options": [
+        {"value": "1", "label": "Square (1:1)"},
+        {"value": "1.33", "label": "Landscape (4:3)"},
+        {"value": "1.78", "label": "Widescreen (16:9)"},
+        {"value": "0.75", "label": "Portrait (3:4)"}
+      ],
+      "default": "1.33"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_overlay",
+      "label": "Show hover overlay",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_content",
+      "label": "Show content below image",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Section padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "header_spacing",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Header spacing",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "grid_spacing",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Grid spacing",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "min": 8,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Grid gap",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Card padding",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Card title",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_description_color",
+      "label": "Card description",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "tag_background",
+      "label": "Tag background",
+      "default": "#f0f0f0"
+    },
+    {
+      "type": "color",
+      "id": "tag_text_color",
+      "label": "Tag text",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link",
+      "default": "#0066cc"
+    },
+    {
+      "type": "color",
+      "id": "link_hover_color",
+      "label": "Link hover",
+      "default": "#004499"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Title size",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Description size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Card border radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Portfolio item 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_1_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "item_1_title",
+      "label": "Title",
+      "default": "Project One"
+    },
+    {
+      "type": "textarea",
+      "id": "item_1_description",
+      "label": "Description",
+      "default": "A beautiful project showcasing our creative capabilities and attention to detail."
+    },
+    {
+      "type": "text",
+      "id": "item_1_tags",
+      "label": "Tags (comma separated)",
+      "default": "Design, Branding, Web"
+    },
+    {
+      "type": "url",
+      "id": "item_1_link",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "item_1_link_text",
+      "label": "Link text",
+      "default": "View project"
+    },
+    {
+      "type": "header",
+      "content": "Portfolio item 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_2_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "item_2_title",
+      "label": "Title",
+      "default": "Project Two"
+    },
+    {
+      "type": "textarea",
+      "id": "item_2_description",
+      "label": "Description",
+      "default": "An innovative solution that combines functionality with stunning visual design."
+    },
+    {
+      "type": "text",
+      "id": "item_2_tags",
+      "label": "Tags (comma separated)",
+      "default": "Development, UX, Mobile"
+    },
+    {
+      "type": "url",
+      "id": "item_2_link",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "item_2_link_text",
+      "label": "Link text",
+      "default": "View project"
+    },
+    {
+      "type": "header",
+      "content": "Portfolio item 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_3_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "item_3_title",
+      "label": "Title",
+      "default": "Project Three"
+    },
+    {
+      "type": "textarea",
+      "id": "item_3_description",
+      "label": "Description",
+      "default": "A comprehensive brand identity project that tells a compelling story."
+    },
+    {
+      "type": "text",
+      "id": "item_3_tags",
+      "label": "Tags (comma separated)",
+      "default": "Branding, Print, Strategy"
+    },
+    {
+      "type": "url",
+      "id": "item_3_link",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "item_3_link_text",
+      "label": "Link text",
+      "default": "View project"
+    },
+    {
+      "type": "header",
+      "content": "Portfolio item 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_4_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "item_4_title",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "item_4_description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "item_4_tags",
+      "label": "Tags (comma separated)"
+    },
+    {
+      "type": "url",
+      "id": "item_4_link",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "item_4_link_text",
+      "label": "Link text",
+      "default": "View project"
+    },
+    {
+      "type": "header",
+      "content": "Portfolio item 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_5_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "item_5_title",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "item_5_description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "item_5_tags",
+      "label": "Tags (comma separated)"
+    },
+    {
+      "type": "url",
+      "id": "item_5_link",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "item_5_link_text",
+      "label": "Link text",
+      "default": "View project"
+    },
+    {
+      "type": "header",
+      "content": "Portfolio item 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_6_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "item_6_title",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "item_6_description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "item_6_tags",
+      "label": "Tags (comma separated)"
+    },
+    {
+      "type": "url",
+      "id": "item_6_link",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "item_6_link_text",
+      "label": "Link text",
+      "default": "View project"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Portfolio"
+    }
+  ],
+  "tag": null
+}
+{% endschema %}

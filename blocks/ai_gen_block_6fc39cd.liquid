@@ -1,0 +1,391 @@
+{% doc %}
+  @prompt
+    Images collage
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-image-collage-{{ ai_gen_id }} {
+    display: grid;
+    gap: {{ block.settings.gap }}px;
+    padding: {{ block.settings.padding }}px;
+    background-color: {{ block.settings.background_color }};
+    border-radius: {{ block.settings.border_radius }}px;}
+
+  .ai-image-collage-{{ ai_gen_id }}--layout-grid {
+    grid-template-columns: repeat({{ block.settings.columns_desktop }}, 1fr);
+  }
+
+  .ai-image-collage-{{ ai_gen_id }}--layout-masonry {
+    grid-template-columns: repeat({{ block.settings.columns_desktop }}, 1fr);
+    grid-auto-rows: 200px;
+  }
+
+  .ai-image-collage-{{ ai_gen_id }}--layout-featured {
+    grid-template-columns: 2fr 1fr;grid-template-rows: 1fr 1fr;
+  }
+
+  .ai-image-collage-item-{{ ai_gen_id }} {
+    position: relative;
+    overflow: hidden;border-radius: {{ block.settings.item_border_radius }}px;
+    background-color: #f4f4f4;min-height: 200px;
+  }
+
+  .ai-image-collage-{{ ai_gen_id }}--layout-featured .ai-image-collage-item-{{ ai_gen_id }}:first-child {
+    grid-row: 1 / 3;
+  }
+
+  .ai-image-collage-{{ ai_gen_id }}--layout-masonry .ai-image-collage-item-{{ ai_gen_id }}:nth-child(3n+1) {
+    grid-row: span 2;
+  }
+
+  .ai-image-collage-{{ ai_gen_id }}--layout-masonry .ai-image-collage-item-{{ ai_gen_id }}:nth-child(5n+2) {
+    grid-row: span 3;
+  }
+
+  .ai-image-collage-item-{{ ai_gen_id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .ai-image-collage-item-{{ ai_gen_id }}:hover img {
+    transform: scale({{ block.settings.hover_scale }});
+  }
+
+  .ai-image-collage-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+  }
+
+  .ai-image-collage-placeholder-{{ ai_gen_id }} svg {
+    width: 60px;
+    height: 60px;
+    opacity: 0.5;
+  }
+
+  .ai-image-collage-overlay-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, {{ block.settings.overlay_opacity }}) 100%
+    );
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .ai-image-collage-item-{{ ai_gen_id }}:hover .ai-image-collage-overlay-{{ ai_gen_id }} {
+    opacity: 1;
+  }
+
+  .ai-image-collage-caption-{{ ai_gen_id }} {
+    color: white;
+    font-size: {{ block.settings.caption_size }}px;
+    font-weight: 500;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);}
+
+  @media screen and (max-width: 749px) {
+    .ai-image-collage-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.columns_mobile }}, 1fr) !important;
+      grid-auto-rows: 200px !important;gap: {{ block.settings.gap | times: 0.75 }}px;padding: {{ block.settings.padding | times: 0.75 }}px;
+    }
+
+    .ai-image-collage-{{ ai_gen_id }}--layout-featured .ai-image-collage-item-{{ ai_gen_id }}:first-child {
+      grid-row: auto;
+    }
+
+    .ai-image-collage-{{ ai_gen_id }}--layout-masonry .ai-image-collage-item-{{ ai_gen_id }} {
+      grid-row: span 1!important;
+    }
+
+    .ai-image-collage-overlay-{{ ai_gen_id }} {
+      padding: 15px;
+    }
+  }
+{% endstyle %}<div
+  class="ai-image-collage-{{ ai_gen_id }} ai-image-collage-{{ ai_gen_id }}--layout-{{ block.settings.layout }}"
+  {{ block.shopify_attributes }}
+>
+  {% for i in (1..8) %}
+    {% liquid
+      assign image_key = 'image_' | append: i
+      assign caption_key = 'caption_' | append: i
+      assign image = block.settings[image_key]
+      assign caption = block.settings[caption_key]
+    %}
+
+    {% if image != blank or forloop.index <= 4 %}
+      <div class="ai-image-collage-item-{{ ai_gen_id }}">
+        {% if image %}
+          <img
+            src="{{ image | image_url: width: 800 }}"
+            alt="{{ image.alt | escape }}"
+            loading="lazy"
+            width="{{ image.width }}"
+            height="{{ image.height }}">
+        {% else %}
+          <div class="ai-image-collage-placeholder-{{ ai_gen_id }}">
+            {{ 'image' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
+
+        {% if caption != blank and block.settings.show_captions %}
+          <div class="ai-image-collage-overlay-{{ ai_gen_id }}">
+            <div class="ai-image-collage-caption-{{ ai_gen_id }}">
+              {{ caption }}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Images collage",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout style",
+      "options": [
+        {
+          "value": "grid",
+          "label": "Grid"
+        },
+        {
+          "value": "masonry",
+          "label": "Masonry"
+        },
+        {
+          "value": "featured",
+          "label": "Featured"
+        }
+      ],
+      "default": "grid"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "label": "Columns on desktop",
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columns on mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Gap between images",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Container border radius",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "item_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Image border radius",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "hover_scale",
+      "min": 1,
+      "max": 1.2,
+      "step": 0.1,
+      "label": "Hover scale effect",
+      "default": 1.1
+    },
+    {
+      "type": "header",
+      "content": "Captions"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_captions",
+      "label": "Show captions on hover",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "caption_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Caption font size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 0.8,
+      "step": 0.1,
+      "label": "Overlay opacity",
+      "default": 0.5
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "text",
+      "id": "caption_1",
+      "label": "Caption 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "text",
+      "id": "caption_2",
+      "label": "Caption 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image 3"
+    },
+    {
+      "type": "text",
+      "id": "caption_3",
+      "label": "Caption 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Image 4"
+    },
+    {
+      "type": "text",
+      "id": "caption_4",
+      "label": "Caption 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_5",
+      "label": "Image 5"
+    },
+    {
+      "type": "text",
+      "id": "caption_5",
+      "label": "Caption 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_6",
+      "label": "Image 6"
+    },
+    {
+      "type": "text",
+      "id": "caption_6",
+      "label": "Caption 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_7",
+      "label": "Image 7"
+    },
+    {
+      "type": "text",
+      "id": "caption_7",
+      "label": "Caption 7"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_8",
+      "label": "Image 8"
+    },
+    {
+      "type": "text",
+      "id": "caption_8",
+      "label": "Caption 8"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Images collage"
+    }
+  ],
+  "tag": null
+}
+{% endschema %}
